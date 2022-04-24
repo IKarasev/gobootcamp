@@ -10,5 +10,5 @@ func main() { // package scope
 	fmt.Println("Scopes!")
 
 	x := 10 // local (block) scope
-	fmt.Println(x)
+	fmt.Println(x, pi)
 }
