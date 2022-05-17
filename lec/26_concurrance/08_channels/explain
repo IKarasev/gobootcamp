@@ -1,0 +1,46 @@
+package description
+
+import (
+	"fmt"
+	"strings"
+)
+
+const lecHeader string = "Concurrency: Channels"
+
+// channels allow to connect two routines
+// to make communications between them
+
+func main() {
+	pln := fmt.Println
+	pf := fmt.Printf
+	pf("%s\n", lecHeader)
+	pln(strings.Repeat("-", 10))
+
+	// decl channel
+	var ch chan int // creating channel of type int
+
+	pln("ch =", ch) //=> nil
+
+	// init channel
+	ch = make(chan int)
+
+	pln("ch =", ch) // => like a pointer and behave like it
+
+	// Chanel has 2 methods
+	// Send - transmit value from one routin to another, calles Recieve on reciever routin
+	// channel operator: <-
+
+	// put value to channel (Send operation)
+	ch <- 10
+
+	// recieve value from channel (Recieve operation)
+	num := <-ch
+	pln("num =", num)
+
+	// closing channel
+	close(ch)
+
+	// after closing channel all send operations will end with panic
+	// recieve operations will mute sent values until normal values are left
+
+}
